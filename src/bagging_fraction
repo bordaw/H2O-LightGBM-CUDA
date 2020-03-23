@@ -1,0 +1,123 @@
+boosting/dart.hpp:    random_for_drop_ = Random(config_->drop_seed);
+boosting/dart.hpp:    random_for_drop_ = Random(config_->drop_seed);
+boosting/dart.hpp:    if (!config_->uniform_drop) {
+boosting/dart.hpp:    bool is_skip = random_for_drop_.NextFloat() < config_->skip_drop;
+boosting/dart.hpp:      double drop_rate = config_->drop_rate;
+boosting/dart.hpp:      if (!config_->uniform_drop) {
+boosting/dart.hpp:        if (config_->max_drop > 0) {
+boosting/dart.hpp:          drop_rate = std::min(drop_rate, config_->max_drop * inv_average_weight / sum_weight_);
+boosting/dart.hpp:            if (drop_index_.size() >= static_cast<size_t>(config_->max_drop)) {
+boosting/dart.hpp:        if (config_->max_drop > 0) {
+boosting/dart.hpp:          drop_rate = std::min(drop_rate, config_->max_drop / static_cast<double>(iter_));
+boosting/dart.hpp:            if (drop_index_.size() >= static_cast<size_t>(config_->max_drop)) {
+boosting/dart.hpp:    if (!config_->xgboost_dart_mode) {
+boosting/dart.hpp:      shrinkage_rate_ = config_->learning_rate / (1.0f + static_cast<double>(drop_index_.size()));
+boosting/dart.hpp:        shrinkage_rate_ = config_->learning_rate;
+boosting/dart.hpp:        shrinkage_rate_ = config_->learning_rate / (config_->learning_rate + static_cast<double>(drop_index_.size()));
+boosting/dart.hpp:    if (!config_->xgboost_dart_mode) {
+boosting/dart.hpp:        if (!config_->uniform_drop) {
+boosting/dart.hpp:          models_[curr_tree]->Shrinkage(-k / config_->learning_rate);
+boosting/dart.hpp:        if (!config_->uniform_drop) {
+boosting/dart.hpp:          sum_weight_ -= tree_weight_[i] * (1.0f / (k + config_->learning_rate));;
+boosting/dart.hpp:          tree_weight_[i] *= (k / (k + config_->learning_rate));
+boosting/gbdt.cpp:  early_stopping_round_ = config_->early_stopping_round;
+boosting/gbdt.cpp:  es_first_metric_only_ = config_->first_metric_only;
+boosting/gbdt.cpp:  shrinkage_rate_ = config_->learning_rate;
+boosting/gbdt.cpp:  if (config_->device_type == std::string("cuda")) {
+boosting/gbdt.cpp://  if (config_->bagging_fraction == 1.0){config_->bagging_fraction = 0.8;} moved to application.cpp
+boosting/gbdt.cpp://  if (config_->bagging_freq == 0) {config_->bagging_freq = 1;} moved to application.cpp
+boosting/gbdt.cpp:  tree_learner_ = std::unique_ptr<TreeLearner>(TreeLearner::CreateTreeLearner(config_->tree_learner, config_->device_type, config_.get()));
+boosting/gbdt.cpp:  if (config_->device_type == std::string("cuda")) {
+boosting/gbdt.cpp:  data_size_t bag_data_cnt = static_cast<data_size_t>(config_->bagging_fraction * cnt);
+boosting/gbdt.cpp:      is_in_bag = cur_rand.NextFloat() < config_->pos_bagging_fraction;
+boosting/gbdt.cpp:      is_in_bag = cur_rand.NextFloat() < config_->neg_bagging_fraction;
+boosting/gbdt.cpp:  if ((bag_data_cnt_ < num_data_ && iter % config_->bagging_freq == 0)
+boosting/gbdt.cpp:      Random cur_rand(config_->bagging_seed + iter * num_threads_ + i);
+boosting/gbdt.cpp:     if (resized && (config_->device_type == std::string("cuda"))) {
+boosting/gbdt.cpp:  for (int iter = 0; iter < config_->num_iterations && !is_finished; ++iter) {
+boosting/gbdt.cpp:    if (config_->boost_from_average || (train_data_ != nullptr && train_data_->num_features() == 0)) {
+boosting/gbdt.cpp: if ((config_->device_type == std::string("cuda")) && (iter_ == 0)) {
+boosting/gbdt.cpp:      if (iter_next < config_->num_iterations) {
+boosting/gbdt.cpp:  if (config_->device_type == std::string("cuda")){ //LGBM_CUDA
+boosting/gbdt.cpp:  bool need_output = (iter % config_->metric_freq) == 0;
+boosting/gbdt.cpp:      config_.get() != nullptr && config_->bagging_fraction == config->bagging_fraction && config_->bagging_freq == config->bagging_freq
+boosting/gbdt.cpp:      && config_->pos_bagging_fraction == config->pos_bagging_fraction && config_->neg_bagging_fraction == config->neg_bagging_fraction) {
+boosting/gbdt.cpp:    if (config_->device_type == std::string("cuda")){ // LGBM_CUDA
+boosting/gbdt_model_text.cpp:    ss << config_->ToString() << "\n";
+boosting/goss.hpp:    CHECK(config_->top_rate + config_->other_rate <= 1.0f);
+boosting/goss.hpp:    CHECK(config_->top_rate > 0.0f && config_->other_rate > 0.0f);
+boosting/goss.hpp:    if (config_->bagging_freq > 0 && config_->bagging_fraction != 1.0f) {
+boosting/goss.hpp:    if (config_->top_rate + config_->other_rate <= 0.5) {
+boosting/goss.hpp:      auto bag_data_cnt = static_cast<data_size_t>((config_->top_rate + config_->other_rate) * num_data_);
+boosting/goss.hpp:    data_size_t top_k = static_cast<data_size_t>(cnt * config_->top_rate);
+boosting/goss.hpp:    data_size_t other_k = static_cast<data_size_t>(cnt * config_->other_rate);
+boosting/goss.hpp:    if (iter < static_cast<int>(1.0f / config_->learning_rate)) { return; }
+boosting/goss.hpp:      Random cur_rand(config_->bagging_seed + iter * num_threads_ + i);
+treelearner/cuda_tree_learner.cpp:  InitGPU(config_->num_gpu); // LGBM_CUDA
+treelearner/cuda_tree_learner.cpp:  hist_bin_entry_sz_ = config_->gpu_use_dp ? sizeof(HistogramBinEntry) : sizeof(GPUHistogramBinEntry);
+treelearner/cuda_tree_learner.cpp:    if (config_->gpu_use_dp) {
+treelearner/cuda_tree_learner.cpp:      if (config_->gpu_use_dp) {
+treelearner/data_parallel_tree_learner.cpp:  global_data_count_in_leaf_.resize(this->config_->num_leaves);
+treelearner/data_parallel_tree_learner.cpp:  global_data_count_in_leaf_.resize(this->config_->num_leaves);
+treelearner/data_parallel_tree_learner.cpp:  SyncUpGlobalBestSplit(input_buffer_.data(), input_buffer_.data(), &smaller_best_split, &larger_best_split, this->config_->max_cat_threshold);
+treelearner/feature_parallel_tree_learner.cpp:  input_buffer_.resize((sizeof(SplitInfo) + sizeof(uint32_t) * this->config_->max_cat_threshold) * 2);
+treelearner/feature_parallel_tree_learner.cpp:  output_buffer_.resize((sizeof(SplitInfo) + sizeof(uint32_t) * this->config_->max_cat_threshold) * 2);
+treelearner/feature_parallel_tree_learner.cpp:  SyncUpGlobalBestSplit(input_buffer_.data(), input_buffer_.data(), &smaller_best_split, &larger_best_split, this->config_->max_cat_threshold);
+treelearner/gpu_tree_learner.cpp:  InitGPU(config_->gpu_platform_id, config_->gpu_device_id);
+treelearner/gpu_tree_learner.cpp:  hist_bin_entry_sz_ = config_->gpu_use_dp ? sizeof(HistogramBinEntry) : sizeof(GPUHistogramBinEntry);
+treelearner/gpu_tree_learner.cpp:         << " -D USE_CONSTANT_BUF=" << use_constants << " -D USE_DP_FLOAT=" << int(config_->gpu_use_dp)
+treelearner/gpu_tree_learner.cpp:    if (config_->gpu_use_dp) {
+treelearner/gpu_tree_learner.cpp:      if (config_->gpu_use_dp) {
+treelearner/serial_tree_learner.cpp:  random_ = Random(config_->feature_fraction_seed);
+treelearner/serial_tree_learner.cpp:  if (config_->histogram_pool_size <= 0) {
+treelearner/serial_tree_learner.cpp:    max_cache_size = config_->num_leaves;
+treelearner/serial_tree_learner.cpp:    max_cache_size = static_cast<int>(config_->histogram_pool_size * 1024 * 1024 / total_histogram_size);
+treelearner/serial_tree_learner.cpp:  max_cache_size = std::min(max_cache_size, config_->num_leaves);
+treelearner/serial_tree_learner.cpp:  histogram_pool_.DynamicChangeSize(train_data_, config_, max_cache_size, config_->num_leaves);
+treelearner/serial_tree_learner.cpp:  best_split_per_leaf_.resize(config_->num_leaves);
+treelearner/serial_tree_learner.cpp:  splits_per_leaf_.resize(config_->num_leaves*train_data_->num_features());
+treelearner/serial_tree_learner.cpp:  bool is_cuda = config_->device_type == std::string("cuda");
+treelearner/serial_tree_learner.cpp:  data_partition_.reset(new DataPartition(num_data_, config_->num_leaves, is_cuda)); // LGBM_CUDA
+treelearner/serial_tree_learner.cpp:  if (!config_->cegb_penalty_feature_coupled.empty()) {
+treelearner/serial_tree_learner.cpp:    CHECK(config_->cegb_penalty_feature_coupled.size() == static_cast<size_t>(train_data_->num_total_features()));
+treelearner/serial_tree_learner.cpp:  if (!config_->cegb_penalty_feature_lazy.empty()) {
+treelearner/serial_tree_learner.cpp:    CHECK(config_->cegb_penalty_feature_lazy.size() == static_cast<size_t>(train_data_->num_total_features()));
+treelearner/serial_tree_learner.cpp:  if (config_->num_leaves != config->num_leaves) {
+treelearner/serial_tree_learner.cpp:      max_cache_size = config_->num_leaves;
+treelearner/serial_tree_learner.cpp:      max_cache_size = static_cast<int>(config_->histogram_pool_size * 1024 * 1024 / total_histogram_size);
+treelearner/serial_tree_learner.cpp:    max_cache_size = std::min(max_cache_size, config_->num_leaves);
+treelearner/serial_tree_learner.cpp:    histogram_pool_.DynamicChangeSize(train_data_, config_, max_cache_size, config_->num_leaves);
+treelearner/serial_tree_learner.cpp:    best_split_per_leaf_.resize(config_->num_leaves);
+treelearner/serial_tree_learner.cpp:    data_partition_->ResetLeaves(config_->num_leaves);
+treelearner/serial_tree_learner.cpp:  auto tree = std::unique_ptr<Tree>(new Tree(config_->num_leaves));
+treelearner/serial_tree_learner.cpp:  for (int split = init_splits; split < config_->num_leaves - 1; ++split) {
+treelearner/serial_tree_learner.cpp:                                                                  config_->lambda_l1, config_->lambda_l2, config_->max_delta_step);
+treelearner/serial_tree_learner.cpp:    tree->SetLeafOutput(i, config_->refit_decay_rate * old_leaf_output + (1.0 - config_->refit_decay_rate) * new_leaf_output);
+treelearner/serial_tree_learner.cpp:  if (config_->feature_fraction < 1) {
+treelearner/serial_tree_learner.cpp:    int used_feature_cnt = static_cast<int>(valid_feature_indices_.size()*config_->feature_fraction);
+treelearner/serial_tree_learner.cpp:  for (int i = 0; i < config_->num_leaves; ++i) {
+treelearner/serial_tree_learner.cpp:        ordered_bins_[ordered_bin_indices_[i]]->Init(nullptr, config_->num_leaves);
+treelearner/serial_tree_learner.cpp:        ordered_bins_[ordered_bin_indices_[i]]->Init(is_data_in_leaf_.data(), config_->num_leaves);
+treelearner/serial_tree_learner.cpp:  if (config_->max_depth > 0) {
+treelearner/serial_tree_learner.cpp:    if (tree->leaf_depth(left_leaf) >= config_->max_depth) {
+treelearner/serial_tree_learner.cpp:  if (num_data_in_right_child < static_cast<data_size_t>(config_->min_data_in_leaf * 2)
+treelearner/serial_tree_learner.cpp:      && num_data_in_left_child < static_cast<data_size_t>(config_->min_data_in_leaf * 2)) {
+treelearner/serial_tree_learner.cpp:  if (config_->cegb_penalty_feature_lazy.empty())
+treelearner/serial_tree_learner.cpp:  double penalty = config_->cegb_penalty_feature_lazy[feature_index];
+treelearner/serial_tree_learner.cpp:    smaller_split.gain -= config_->cegb_tradeoff * config_->cegb_penalty_split * smaller_leaf_splits_->num_data_in_leaf();
+treelearner/serial_tree_learner.cpp:    if (!config_->cegb_penalty_feature_coupled.empty() && !feature_used[feature_index]) {
+treelearner/serial_tree_learner.cpp:      smaller_split.gain -= config_->cegb_tradeoff * config_->cegb_penalty_feature_coupled[real_fidx];
+treelearner/serial_tree_learner.cpp:    if (!config_->cegb_penalty_feature_lazy.empty()) {
+treelearner/serial_tree_learner.cpp:      smaller_split.gain -= config_->cegb_tradeoff * CalculateOndemandCosts(real_fidx, smaller_leaf_splits_->LeafIndex());
+treelearner/serial_tree_learner.cpp:    larger_split.gain -= config_->cegb_tradeoff * config_->cegb_penalty_split * larger_leaf_splits_->num_data_in_leaf();
+treelearner/serial_tree_learner.cpp:    if (!config_->cegb_penalty_feature_coupled.empty() && !feature_used[feature_index]) {
+treelearner/serial_tree_learner.cpp:      larger_split.gain -= config_->cegb_tradeoff * config_->cegb_penalty_feature_coupled[real_fidx];
+treelearner/serial_tree_learner.cpp:    if (!config_->cegb_penalty_feature_lazy.empty()) {
+treelearner/serial_tree_learner.cpp:      larger_split.gain -= config_->cegb_tradeoff*CalculateOndemandCosts(real_fidx, larger_leaf_splits_->LeafIndex());
+treelearner/serial_tree_learner.cpp:  if (!config_->cegb_penalty_feature_coupled.empty() && !feature_used[inner_feature_index]) {
+treelearner/serial_tree_learner.cpp:      split->gain += config_->cegb_tradeoff*config_->cegb_penalty_feature_coupled[best_split_info.feature];
+treelearner/serial_tree_learner.cpp:  if (!config_->cegb_penalty_feature_lazy.empty()) {
+treelearner/voting_parallel_tree_learner.cpp:  top_k_ = this->config_->top_k;
+treelearner/voting_parallel_tree_learner.cpp:  global_data_count_in_leaf_.resize(this->config_->num_leaves);
+treelearner/voting_parallel_tree_learner.cpp:  global_data_count_in_leaf_.resize(this->config_->num_leaves);
+treelearner/voting_parallel_tree_learner.cpp:  SyncUpGlobalBestSplit(input_buffer_.data(), input_buffer_.data(), &smaller_best_split, &larger_best_split, this->config_->max_cat_threshold);
