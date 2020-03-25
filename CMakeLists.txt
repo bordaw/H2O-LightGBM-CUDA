@@ -122,7 +122,7 @@ if(USE_CUDA)
     find_package(CUDA REQUIRED)
     include_directories(${CUDA_INCLUDE_DIRS})
     LIST(APPEND CMAKE_CUDA_FLAGS -g -Xcompiler=-fopenmp -Xcompiler=-fPIC -Xcompiler=-Wall -lineinfo)
-    CUDA_SELECT_NVCC_ARCH_FLAGS(CUDA_ARCH_FLAGS 7.0)
+    CUDA_SELECT_NVCC_ARCH_FLAGS(CUDA_ARCH_FLAGS 6.0 6.1 6.2 7.0 7.5+PTX)
 
     LIST(APPEND CMAKE_CUDA_FLAGS ${CUDA_ARCH_FLAGS})
     if(CMAKE_BUILD_TYPE MATCHES Release)
