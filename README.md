@@ -2,7 +2,7 @@ H20-LightGBM-CUDA, CUDA Enabled Light Gradient Boosting Machine
 =========================================
 
 This repository contains a CUDA-enabled version of the LightGBM v2.2.4. This code was developed
-at the IBM T. J. Watson Research Center by Carl Paterson (University of Illinois), Yulhwa Kim (POSTECH), and Rajesh Bordawekar (work done by Carl and Yulhwa as interns at IBM T. J. Watson Research Center). 
+at the IBM T. J. Watson Research Center by Carl Pearson (University of Illinois), Yulhwa Kim (POSTECH), and Rajesh Bordawekar (work done by Carl and Yulhwa as interns at IBM T. J. Watson Research Center). 
 
 [![Azure Pipelines Build Status](https://lightgbm-ci.visualstudio.com/lightgbm-ci/_apis/build/status/Microsoft.LightGBM?branchName=master)](https://lightgbm-ci.visualstudio.com/lightgbm-ci/_build/latest?definitionId=1)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/1ys5ot401m0fep6l/branch/master?svg=true)](https://ci.appveyor.com/project/guolinke/lightgbm/branch/master)
