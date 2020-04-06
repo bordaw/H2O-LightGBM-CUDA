@@ -160,7 +160,7 @@ void GBDT::Init(const Config* config, const Dataset* train_data, const Objective
   // LGBM_CUDA do not copy feature is is_use_subset for initialization
   // LGBM_CUDA initialize training data info with bagging data size (tmp_subset_)
 
-  if (config_->device_type == std::string("cuda")) {
+  if (config_->device_type == std::string("cuda") && is_use_subset_) {
      tree_learner_->Init(tmp_subset_.get(), is_constant_hessian_, is_use_subset_);
   } else {
     tree_learner_->Init(train_data_, is_constant_hessian_, is_use_subset_);
