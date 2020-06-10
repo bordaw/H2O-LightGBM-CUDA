@@ -356,6 +356,7 @@ if(USE_CUDA)
     histo256-fulldata_sp_const
     histo256-fulldata_sp
   )
+  set_target_properties(lightgbm PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
   TARGET_LINK_LIBRARIES(
     _lightgbm
     histo256_sp_const
@@ -363,6 +364,7 @@ if(USE_CUDA)
     histo256-fulldata_sp_const
     histo256-fulldata_sp
   )
+  set_target_properties(_lightgbm PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 endif(USE_CUDA)
 
 
