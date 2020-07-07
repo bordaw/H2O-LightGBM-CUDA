@@ -501,7 +501,9 @@ bool Dataset::ReSize(data_size_t num_data) {
       OMP_LOOP_EX_END();
     }
     OMP_THROW_EX();
+    return 1;
   }
+  return 0;
 }
 
 void Dataset::CopySubset(const Dataset* fullset, const data_size_t* used_indices, data_size_t num_used_indices, bool need_meta_data) {
