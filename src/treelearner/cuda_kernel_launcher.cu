@@ -32,7 +32,7 @@ void cuda_histogram(
  
    if (use_all_features){
      if (!is_constant_hessian) {
-       histogram256<<<num_workgroups, 256, 0, stream>>>(
+       histogram256_fulldata<<<num_workgroups, 256, 0, stream>>>(
          arg0,
          arg1,
          arg2,
@@ -47,7 +47,7 @@ void cuda_histogram(
        );
      }
      else {
-       histogram256<<<num_workgroups, 256, 0, stream>>>(
+       histogram256_fulldata<<<num_workgroups, 256, 0, stream>>>(
          arg0,
          arg1,
          arg2,
